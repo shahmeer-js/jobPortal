@@ -238,5 +238,42 @@ Typical workflow:
 
 ---
 
+## Docker
+
+### Backend Microservices images
+
+1. Auth Service
+```
+https://hub.docker.com/repository/docker/shahmeer01/job_portal_auth
+```
+
+2. User Service
+```
+https://hub.docker.com/repository/docker/shahmeer01/job_portal_user
+```
+
+3. Job Service
+```
+https://hub.docker.com/repository/docker/shahmeer01/job_portal_job
+```
+
+4. Payment Service
+```
+https://hub.docker.com/repository/docker/shahmeer01/job_portal_payment
+```
+
+5. Utils Service
+```
+https://hub.docker.com/repository/docker/shahmeer01/job_portal_utils
+```
+
+### Backend Microservices images
+
+```
+https://hub.docker.com/repository/docker/shahmeer01/job_portal_frontend
+```
+
+---
+
 ## License
 Add a license if you plan to open-source this project (MIT/Apache-2.0 recommended).
