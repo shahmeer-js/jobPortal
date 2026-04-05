@@ -1,0 +1,27 @@
+# --- System Files ---
+*.log
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Dependencies (Recursive) ---
+**/node_modules/
+
+# --- Environment & Secrets ---
+**/.env
+
+# --- Build & Output (Recursive) ---
+**/dist/
+**/build/
+**/.next/
+**/.cache/
+
+# --- Testing ---
+**/coverage/
+**/.nyc_output/
+
+# --- Docker ---
+**/.dockerignore

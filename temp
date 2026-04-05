@@ -1,0 +1,20 @@
+docker run -d --name kafka -p 9092:9092 -e KAFKA_NODE_ID=1 -e KAFKA_PROCESS_ROLES=broker,controller -e KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT -e KAFKA_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 -e KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER -e KAFKA_CONTROLLER_QUORUM_VOTERS=1@localhost:9093 -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 -e KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0 apache/kafka:4.1.0
+
+const deleteJobHandler = async (jobId: number) => {
+    if (!confirm("Are you sure? You want to delete this job")) {
+      return;
+    }
+    setBtnLoading(true);
+    try {
+      const { data } = await axios.delete(`${job_service}/api/job${jobId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      toast.success(data.message);
+    } catch (error: any) {
+      toast.error(error?.response.data.message);
+    } finally {
+      setBtnLoading(false);
+    }
+  };
