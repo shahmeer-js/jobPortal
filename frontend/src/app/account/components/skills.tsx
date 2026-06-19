@@ -1,5 +1,9 @@
 "use client";
 
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { Award, Loader, PlusIcon, Sparkles, X } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,9 +14,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { useAppData } from "@/context/AppContext";
 import { AccountProps } from "@/type";
-import { Award, Loader, PlusIcon, Sparkles, X } from "lucide-react";
-import React, { useState } from "react";
-import toast from "react-hot-toast";
 
 const Skills: React.FC<AccountProps> = ({ user, isYourAccount }) => {
   const { addSkill, removeSkill, btnLoading } = useAppData();

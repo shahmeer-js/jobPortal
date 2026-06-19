@@ -66,7 +66,7 @@ const ResumeAnalyzer = () => {
     try {
       const base64 = await convertToBase64(file);
       const { data } = await axios.post(
-        `${utils_service}/api/utils/resume-analyzer`,
+        `${utils_service}/resume-analyzer`,
         {
           pdfBase64: base64,
         },

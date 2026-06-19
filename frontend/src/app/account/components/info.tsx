@@ -1,3 +1,9 @@
+import React, { ChangeEvent, useRef, useState } from "react";
+
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -11,7 +17,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAppData } from "@/context/AppContext";
-import { AccountProps } from "@/type";
 import {
   Briefcase,
   FileText,
@@ -28,11 +33,8 @@ import {
   AlertTriangle,
   RefreshCcw,
 } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React, { ChangeEvent, useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { AccountProps } from "@/type";
 
 const Info: React.FC<AccountProps> = ({ user, isYourAccount }) => {
   const { updateProfilePic, updateResume, updateUser, btnLoading } =

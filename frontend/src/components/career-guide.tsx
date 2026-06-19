@@ -61,7 +61,7 @@ const CareerGuide = () => {
     setLoading(true);
 
     try {
-      const { data } = await axios.post(`${utils_service}/api/utils/career`, {
+      const { data } = await axios.post(`${utils_service}/career`, {
         skills: skills,
       });
 

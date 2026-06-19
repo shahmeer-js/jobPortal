@@ -1,14 +1,17 @@
 "use client";
 
-import { auth_service, useAppData } from "@/context/AppContext";
-import axios from "axios";
-import { redirect } from "next/navigation";
 import React, { FormEvent, useState } from "react";
-import toast from "react-hot-toast";
-import Cookies from "js-cookie";
-import { Label } from "@/components/ui/label";
-import { ArrowRight, Lock, Mail } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+
+import axios from "axios";
+import Cookies from "js-cookie";
+
+import toast from "react-hot-toast";
+import { ArrowRight, Lock, Mail } from "lucide-react";
+
+import { auth_service, useAppData } from "@/context/AppContext";
+import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Loading from "@/components/loading";
@@ -31,14 +34,14 @@ const LoginPage = () => {
     setBtnLoading(true);
 
     try {
-      const { data } = await axios.post(`${auth_service}/api/auth/login`, {
+      const { data } = await axios.post(`${auth_service}/login`, {
         email,
         password,
       });
 
       Cookies.set("token", data.token, {
         expires: 15,
-        secure: true,
+        secure: false,
         path: "/",
       });
 

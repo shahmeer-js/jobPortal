@@ -83,7 +83,7 @@ export const updateProfilePic = TryCatch(
     }
 
     const { data: uploadResult }: { data: { url: string; public_id: string } } =
-      await axios.post(`${process.env.UPLOAD_SERVICE_URL}/api/utils/upload`, {
+      await axios.post(`${process.env.UPLOAD_SERVICE_URL}/upload`, {
         buffer: fileBuffer.content,
         public_id: oldPublicId,
       });
@@ -122,7 +122,7 @@ export const updateResume = TryCatch(async (req: AuthenticatedRequest, res) => {
   }
 
   const { data: uploadResult }: { data: { url: string; public_id: string } } =
-    await axios.post(`${process.env.UPLOAD_SERVICE_URL}/api/utils/upload`, {
+    await axios.post(`${process.env.UPLOAD_SERVICE_URL}/upload`, {
       buffer: fileBuffer.content,
       public_id: oldPublicId,
     });

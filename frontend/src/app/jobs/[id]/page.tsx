@@ -56,7 +56,7 @@ const JobPage = () => {
 
   async function fetchSingleJob() {
     try {
-      const { data } = await axios.get(`${job_service}/api/job/${id}`);
+      const { data } = await axios.get(`${job_service}/${id}`);
       setJob(data);
     } catch (error: any) {
       toast.error(error.response.data.message);
@@ -68,7 +68,7 @@ const JobPage = () => {
   async function fetchJobApplications() {
     try {
       const { data } = await axios.get(
-        `${job_service}/api/job/application/${id}`,
+        `${job_service}/application/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -89,7 +89,7 @@ const JobPage = () => {
 
     try {
       const { data } = await axios.put(
-        `${job_service}/api/job/application/${id}`,
+        `${job_service}/application/${id}`,
         {
           status: applicationStatus,
         },

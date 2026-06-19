@@ -1,8 +1,10 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import React from "react";
-import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+
 const About = () => {
   return (
     <div className="min-h-screen">

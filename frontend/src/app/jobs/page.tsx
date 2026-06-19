@@ -50,7 +50,7 @@ const JobsPage = () => {
   async function fetchJobs() {
     try {
       const { data } = await axios.get(
-        `${job_service}/api/job?title=${title}&location=${location}`,
+        `${job_service}/?title=${title}&location=${location}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

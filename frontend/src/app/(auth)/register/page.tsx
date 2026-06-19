@@ -1,11 +1,14 @@
 "use client";
 
-import { auth_service, useAppData } from "@/context/AppContext";
-import axios from "axios";
-import { redirect } from "next/navigation";
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import toast from "react-hot-toast";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+
+import axios from "axios";
 import Cookies from "js-cookie";
+import toast from "react-hot-toast";
+
+import { auth_service, useAppData } from "@/context/AppContext";
 import { Label } from "@/components/ui/label";
 import {
   ArrowRight,
@@ -17,7 +20,6 @@ import {
   Quote,
   User,
 } from "lucide-react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Loading from "@/components/loading";
@@ -58,7 +60,7 @@ const RegisterPage = () => {
 
     try {
       const { data } = await axios.post(
-        `${auth_service}/api/auth/register`,
+        `${auth_service}/register`,
         formData,
       );
 
@@ -66,7 +68,7 @@ const RegisterPage = () => {
 
       Cookies.set("token", data.token, {
         expires: 15,
-        secure: true,
+        secure: false,
         path: "/",
       });
 

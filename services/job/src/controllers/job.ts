@@ -63,7 +63,7 @@ export const createCompany = TryCatch(
     }
 
     const { data } = await axios.post(
-      `${process.env.UPLOAD_SERVICE_URL}/api/utils/upload`,
+      `${process.env.UPLOAD_SERVICE_URL}/upload`,
       { buffer: fileBuffer.content },
     );
 

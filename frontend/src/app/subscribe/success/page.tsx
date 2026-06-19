@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react"; // Added Suspense
 import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -10,7 +10,8 @@ import toast from "react-hot-toast";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
 
-const PaymentSuccessPage = () => {
+// 1. Move logic into a internal component
+const SuccessContent = () => {
   const searchParams = useSearchParams();
   const token = Cookies.get("token");
   const [loading, setLoading] = useState(true);
@@ -20,7 +21,7 @@ const PaymentSuccessPage = () => {
     const sessionId = searchParams.get("session_id") || "";
     try {
       const { data } = await axios.get(
-        `${payment_service}/api/payment/verify/?session_id=${sessionId}`,
+        `${payment_service}/verify/?session_id=${sessionId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -47,7 +48,7 @@ const PaymentSuccessPage = () => {
 
   useEffect(() => {
     verifyPayment();
-  }, []);
+  }, [searchParams]);
 
   if (loading) return <Loading />;
 
@@ -69,6 +70,14 @@ const PaymentSuccessPage = () => {
         </button>
       </Card>
     </div>
+  );
+};
+
+const PaymentSuccessPage = () => {
+  return (
+    <Suspense fallback={<Loading />}>
+      <SuccessContent />
+    </Suspense>
   );
 };
 

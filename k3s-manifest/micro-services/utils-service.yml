@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: utils-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: utils-service
+  template:
+    metadata:
+      labels:
+        app: utils-service
+    spec:
+      containers:
+        - name: utils
+          image: shahmeer01/job_portal_utils:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5003
+          envFrom:
+            - configMapRef:
+                name: global-config
+            - secretRef:
+                name: global-secret
+            - configMapRef:
+                name: utils-config
+            - secretRef:
+                name: utils-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: utils-service
+spec:
+  selector:
+    app: utils-service
+  ports:
+    - protocol: TCP
+      port: 5003
+      targetPort: 5003

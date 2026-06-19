@@ -24,7 +24,7 @@ const ForgotPasswordPage = () => {
     setBtnLoading(true);
     try {
       const { data } = await axios.post(
-        `${auth_service}/api/auth/forgot-password`,
+        `${auth_service}/forgot-password`,
         {
           email,
         },

@@ -103,7 +103,7 @@ const CompanyPage = () => {
         company_id: id,
       };
 
-      const { data } = await axios.post(`${job_service}/api/job/new`, jobData, {
+      const { data } = await axios.post(`${job_service}/new`, jobData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -158,7 +158,7 @@ const CompanyPage = () => {
       };
 
       const { data } = await axios.put(
-        `${job_service}/api/job/${selectedJob.job_id}`,
+        `${job_service}/${selectedJob.job_id}`,
         jobData,
         {
           headers: {
@@ -179,7 +179,7 @@ const CompanyPage = () => {
   async function fetchCompany() {
     try {
       setLoading(true);
-      const { data } = await axios.get(`${job_service}/api/job/company/${id}`);
+      const { data } = await axios.get(`${job_service}/company/${id}`);
       setCompany(data);
     } catch (error: any) {
       toast.error(error?.response.data.message);

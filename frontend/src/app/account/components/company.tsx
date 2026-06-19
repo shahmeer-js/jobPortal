@@ -1,10 +1,14 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Cookies from "js-cookie";
-import { job_service, useAppData } from "@/context/AppContext";
+import Link from "next/link";
+import Image from "next/image";
+
 import axios from "axios";
+import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+
+import { job_service, useAppData } from "@/context/AppContext";
 import Loading from "@/components/loading";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import {
@@ -20,8 +24,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Company as CompanyType } from "@/type";
-import Image from "next/image";
-import Link from "next/link";
 import {
   Dialog,
   DialogContent,
@@ -62,7 +64,7 @@ const Company = () => {
 
   async function fetchCompanies() {
     try {
-      const { data } = await axios.get(`${job_service}/api/job/company`, {
+      const { data } = await axios.get(`${job_service}/company`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -91,7 +93,7 @@ const Company = () => {
 
     try {
       const { data } = await axios.post(
-        `${job_service}/api/job/company/new`,
+        `${job_service}/company/new`,
         formData,
         {
           headers: {
@@ -119,7 +121,7 @@ const Company = () => {
 
     try {
       const { data } = await axios.delete(
-        `${job_service}/api/job/company/${id}`,
+        `${job_service}/company/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

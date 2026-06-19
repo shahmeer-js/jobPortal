@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { User } from "@/type";
 import { useParams } from "next/navigation";
 import axios from "axios";
-import { user_service } from "@/context/AppContext";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+
+import { user_service } from "@/context/AppContext";
+import { User } from "@/type";
 import Loading from "@/components/loading";
 import Info from "../components/info";
 import Skills from "../components/skills";
@@ -20,7 +21,7 @@ const UserAccount = () => {
   async function fetchUser() {
     const token = Cookies.get("token");
     try {
-      const { data } = await axios.get(`${user_service}/api/user/${id}`, {
+      const { data } = await axios.get(`${user_service}/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

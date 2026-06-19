@@ -12,6 +12,7 @@
 
 # --- Environment & Secrets ---
 **/.env
+.env*
 
 # --- Build & Output (Recursive) ---
 **/dist/
@@ -25,3 +26,6 @@
 
 # --- Docker ---
 **/.dockerignore
+
+# --- Kubernates ---
+**/config-and-secrets.yml

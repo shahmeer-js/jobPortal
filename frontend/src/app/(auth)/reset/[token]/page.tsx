@@ -3,6 +3,7 @@
 import React, { FormEvent, useState } from "react";
 import Link from "next/link";
 import { redirect, useParams } from "next/navigation";
+
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -26,7 +27,7 @@ const ResetPasswordPage = () => {
     setBtnLoading(true);
     try {
       const { data } = await axios.post(
-        `${auth_service}/api/auth/reset-password/${token}`,
+        `${auth_service}/reset-password/${token}`,
         {
           password,
         },
